@@ -1,0 +1,20 @@
+@import net.gutefrage.finch.models.Question
+@(question: Question)
+
+<h2>@{question.title} <span class="badge">@{question.answers.size}</span></h2>
+
+<div>@{question.body}</div>
+
+@for(answer <- question.answers) {
+  <div class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object" src="@{answer.user.picture.thumbnail}" alt="...">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">@{answer.user.name}</h4>
+      <p>@{answer.body}</p>
+    </div>
+  </div>
+}

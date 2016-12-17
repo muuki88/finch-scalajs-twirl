@@ -1,0 +1,25 @@
+<!--
+Default logging configuration for Play.  Our application will use this logging
+configuration unless another one is explicitly specified, see
+https://www.playframework.com/documentation/2.4.x/SettingsLogger.
+
+Use this logging configuration for development.  For production configuration,
+see logback-prod.xml and enable with -Dlogger.resource=logback-prod.xml when
+starting the application.
+-->
+<configuration>
+
+  <!-- Configuration for standard output logging -->
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%level - %logger - %message%n%xException</pattern>
+    </encoder>
+  </appender>
+
+  <root level="INFO">
+    <!-- Log to standard output for all loggers, and silence them all by setting
+         the root level to ERROR.  Only configured loggers (see above) with a
+         lower level will actually log a lot -->
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>
