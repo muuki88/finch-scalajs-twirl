@@ -45,7 +45,7 @@ object WebServer extends TwitterServer {
     Ok(html.index("Finch rocks!")).toResponse[Text.Html]()
   }
 
-  // example for a custom exception message
+  // trigger the html exception page
   val exceptionEndpoint: Endpoint[Response] = get("error") {
     val error: Output[play.twirl.api.HtmlFormat.Appendable] =
       InternalServerError(new Exception("Oops. Something went wrong."))
@@ -57,7 +57,9 @@ object WebServer extends TwitterServer {
       questionService.genQuestion(id).map(Ok)
   }
 
-  val api = static :+: question :+: exceptionEndpoint :+: index
+  val api = (static :+: question :+: exceptionEndpoint :+: index).handle {
+    case e: Exception => InternalServerError(e)
+  }
   // ---- -------------- ----
 
   premain {

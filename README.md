@@ -1,4 +1,4 @@
-# Finch with Scala.js
+# Finch with Scala.js and Twirl templates
 
 This is a simple example application showing how you can integrate [Finch](https://github.com/finagle/finch) 
 with [Scala.js](https://www.scala-js.org/) and [Twirl](https://github.com/playframework/twirl).
