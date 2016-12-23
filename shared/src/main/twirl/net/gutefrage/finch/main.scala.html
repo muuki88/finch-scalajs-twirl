@@ -32,7 +32,11 @@
   </head>
   <body>
    @content
-   @scalajs.html.scripts("client", name => s"/assets/$name", name => getClass.getResource(s"/public/$name") != null)
+   @scalajs.html.scripts(
+     projectName = "client",
+     assets = name => s"/assets/$name",
+     resourceExists = name => getClass.getResource(s"/public/$name") != null
+   )
 
     <footer class="footer">
       <div class="container">
